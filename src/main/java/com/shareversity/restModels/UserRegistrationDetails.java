@@ -1,18 +1,44 @@
 package com.shareversity.restModels;
 
 public class UserRegistrationDetails {
-
-    private String firstName;
-    private String lastName;
-
-    public UserRegistrationDetails(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    public int getId() {
+        return id;
     }
 
-    public UserRegistrationDetails(){
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String password;
+    private String email;
+
+    private String secretCode;
+
+    private boolean codeVerified;
+
+    public UserRegistrationDetails(String firstName, String lastName,
+                                   String password, String email, String secretCode, boolean codeVerified) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.secretCode = secretCode;
+        this.codeVerified = codeVerified;
+    }
+
+    public UserRegistrationDetails() {
+
+    }
+
+    public boolean isCodeVerified() {
+        return codeVerified;
+    }
+
+    public void setCodeVerified(boolean codeVerified) {
+        this.codeVerified = codeVerified;
     }
 
     public String getFirstName() {
@@ -31,6 +57,14 @@ public class UserRegistrationDetails {
         this.lastName = lastName;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -39,6 +73,13 @@ public class UserRegistrationDetails {
         this.email = email;
     }
 
-    private String email;
+    public String getSecretCode() {
+        return secretCode;
+    }
+
+    public void setSecretCode(String secretCode) {
+        this.secretCode = secretCode;
+    }
 
 }
+
