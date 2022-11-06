@@ -10,7 +10,7 @@ public class MailClient
 	private static final String EMAIL = "princyverma589@gmail.com";
 	private static final String PASS = "fzjuolfnnhdbxqrc";
 
-	public static void sendRegistrationEmail(String toEmail, String securityCode) {
+	public static void sendRegistrationEmail(String firstName, String toEmail, String securityCode) {
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
 		props.put("mail.smtp.port", "587"); //TLS Port
@@ -27,16 +27,16 @@ public class MailClient
 		};
 		Session session = Session.getInstance(props, auth);
 
-		sendEmail(session, toEmail,"Security Code for Shareversity Account",
-				"Hello! \n \n" +
-						"Your security code is: " + securityCode + "\n" +
+		sendEmail(session, toEmail,"Confirmation code for Shareversity Account",
+				"Hello " + firstName + "! \n \n" +
+						"You recently registered for Shareversity. To complete your registration, " +
+						"please confirm your account.\n: " + securityCode + "\n" +
 						"Thanks," + "\n" +
 				"Shareversity Team");
 	}
 
 	private static boolean sendEmail(Session session, String toEmail, String subject, String body){
-		try
-		{
+		try {
 			MimeMessage msg = new MimeMessage(session);
 
 			msg.setSubject(subject);

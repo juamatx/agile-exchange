@@ -1,5 +1,6 @@
 package com.shareversity.dao;
 
+import com.shareversity.restModels.LoginObject;
 import com.shareversity.restModels.UserRegistrationDetails;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -55,6 +56,56 @@ public class UserLoginDaoHibernate {
         } finally {
             if (session != null) { session.close(); }
         }
+    }
+
+    public void updateUserCodeVerifyDidNotWork(boolean isCodeVerified, String email) {
+        Session session = factory.openSession();
+        try {
+            org.hibernate.query.Query query = session.createQuery
+                    ("UPDATE UserRegistrationDetails  u SET u.isCodeVerified = :isCodeVerified" +
+                            " WHERE email = :userEmail");
+            query.setParameter("isCodeVerified", isCodeVerified);
+            query.setParameter("userEmail", email);
+            query.executeUpdate();
+        } finally {
+            if (session != null) { session.close(); }
+        }
+    }
+
+    public boolean updateUserCodeVerified(UserRegistrationDetails userRegistrationDetails) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.saveOrUpdate(userRegistrationDetails);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            throw new HibernateException(e);
+        } finally {
+            session.close();
+        }
+        return true;
+    }
+
+    public UserRegistrationDetails findUserByEmailIdAndPassword(LoginObject userEmail) {
+        Session session = factory.openSession();
+        try {
+            org.hibernate.query.Query query =
+                    session.createQuery("FROM UserRegistrationDetails" +
+                            " WHERE email = :email AND password = :password AND isCodeVerified = :isCodeVerified");
+            query.setParameter("email", userEmail.getUserEmail());
+            query.setParameter("password", userEmail.getPassword());
+            query.setParameter("isCodeVerified", true);
+            List list = query.list();
+            if (list.isEmpty()) {
+                return null;
+            }
+            return (UserRegistrationDetails) list.get(0);
+        } finally {
+            if (session != null) { session.close(); }
+        }
+
     }
 }
 
