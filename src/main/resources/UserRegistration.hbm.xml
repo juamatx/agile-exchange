@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.shareversity.restModels.UserRegistrationDetails" table="USER_REGISTRATION">
+    <class name="com.shareversity.restModels.UserRegistrationDetails" table="UserRegistrationDetails">
 
 
         <meta attribute="class-description">
@@ -23,7 +23,7 @@
         <property name="lastName" column="LAST_NAME" type="string" />
         <property name="password" column="EMAIL_PASSWORD" type="java.lang.String" />
         <property name="secretCode" column="SECRET_CODE" type="string" />
-        <property name="codeVerified" column="CODE_VERIFIED" type="java.lang.Boolean" />
+        <property name="isCodeVerified" column="CODE_VERIFIED" type="java.lang.Boolean" />
 
     </class>
 </hibernate-mapping>

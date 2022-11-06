@@ -19,7 +19,6 @@
         <jersey.version>3.0.8</jersey.version>
     </properties>
 
-
     <dependencies>
         <dependency>
             <groupId>org.glassfish.jersey</groupId>
@@ -56,18 +55,6 @@
             <artifactId>jersey-media-json-binding</artifactId>
             <version>3.1.0-M8</version>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.2.12.Final</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.5.0</version>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
         <dependency>
@@ -76,39 +63,11 @@
             <version>3.0.8</version>
         </dependency>
 
-
-
-<!--        <dependency>-->
-<!--            <groupId>com.sun.xml.bind</groupId>-->
-<!--            <artifactId>jaxb-impl</artifactId>-->
-<!--            <version>2.3.0</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.sun.xml.bind</groupId>-->
-<!--            <artifactId>jaxb-core</artifactId>-->
-<!--            <version>2.3.0</version>-->
-<!--        </dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/javax.el/javax.el-api -->
         <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>3.0.0</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.12.Final</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.glassfish/javax.el -->
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>3.0.1-b12</version>
-        </dependency>
-
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.glassfish.web/javax.el &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.glassfish.web</groupId>-->
-<!--            <artifactId>javax.el</artifactId>-->
-<!--            <version>2.2.6</version>-->
-<!--        </dependency>-->
 
         <!--         https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
         <dependency>
@@ -136,6 +95,14 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>2.3.1</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.5.5</version>
+        </dependency>
+
     </dependencies>
 
 </project>

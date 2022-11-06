@@ -1,44 +1,36 @@
 package com.shareversity.restModels;
 
 public class UserRegistrationDetails {
+
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private String secretCode;
+    private boolean isCodeVerified;
+
+    public UserRegistrationDetails(int id, String firstName, String lastName, String password
+            , String email, String secretCode, boolean codeVerified) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.secretCode = secretCode;
+        this.isCodeVerified = codeVerified;
+    }
+
+    public UserRegistrationDetails(){
+
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String password;
-    private String email;
-
-    private String secretCode;
-
-    private boolean codeVerified;
-
-    public UserRegistrationDetails(String firstName, String lastName,
-                                   String password, String email, String secretCode, boolean codeVerified) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.email = email;
-        this.secretCode = secretCode;
-        this.codeVerified = codeVerified;
-    }
-
-    public UserRegistrationDetails() {
-
-    }
-
-    public boolean isCodeVerified() {
-        return codeVerified;
-    }
-
-    public void setCodeVerified(boolean codeVerified) {
-        this.codeVerified = codeVerified;
     }
 
     public String getFirstName() {
@@ -81,5 +73,12 @@ public class UserRegistrationDetails {
         this.secretCode = secretCode;
     }
 
+    public boolean isIsCodeVerified() {
+        return isCodeVerified;
+    }
+
+    public void setIsCodeVerified(boolean codeVerified) {
+        this.isCodeVerified = codeVerified;
+    }
 }
 

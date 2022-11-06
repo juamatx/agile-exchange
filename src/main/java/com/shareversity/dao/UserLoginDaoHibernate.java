@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class UserLoginDaoHibernate {
 
     private SessionFactory factory;
@@ -39,5 +41,20 @@ public class UserLoginDaoHibernate {
         return userRegistrationDetails;
     }
 
+
+    public UserRegistrationDetails findUserByEmailId(String userEmail) {
+        Session session = factory.openSession();
+        try {
+            org.hibernate.query.Query query = session.createQuery("FROM UserRegistrationDetails WHERE email = :email");
+            query.setParameter("email", userEmail);
+            List list = query.list();
+            if (list.isEmpty()) {
+                return null;
+            }
+            return (UserRegistrationDetails) list.get(0);
+        } finally {
+            if (session != null) { session.close(); }
+        }
+    }
 }
 

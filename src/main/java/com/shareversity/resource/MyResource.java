@@ -1,13 +1,13 @@
 package com.shareversity.resource;
 
-import com.shareversity.dao.UserLoginDao;
 import com.shareversity.dao.UserLoginDaoHibernate;
 import com.shareversity.restModels.UserRegistrationDetails;
+import com.shareversity.utils.MailClient;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-import java.sql.SQLException;
+import java.util.UUID;
 
 @Path("/shareversity")
 public class MyResource {
@@ -44,32 +44,26 @@ public class MyResource {
                     entity("Email Id can't be null or empty").build();
         }
 
-        if(!isValidEmailId(userEmail)){
+//        if(!isValidEmailId(userEmail)){
+//            return Response.status(Response.Status.BAD_REQUEST).
+//                    entity("Please enter a valid student email Id with edu domain").build();
+//        }
+
+        UserLoginDaoHibernate userLoginDaoHibernate = new UserLoginDaoHibernate();
+        UserRegistrationDetails userByEmailId = userLoginDaoHibernate.findUserByEmailId(userEmail);
+
+        if(userByEmailId!=null){
             return Response.status(Response.Status.BAD_REQUEST).
-                    entity("Please enter a valid student email Id with edu domain").build();
+                    entity("User already exists").build();
         }
 
-//        UserLoginDao userLoginDao = new UserLoginDao();
-////        // check if the user is already registered
-//        boolean userLogin = false;
-//        try {
-//             userLogin = userLoginDao.findUserLoginsByEmail(userEmail);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        // check if studenLogin either has  record for given email and "confirmed" is true
-//        if(userLogin == true) {
-//            return Response.status(Response.Status.NOT_ACCEPTABLE).
-//                    entity("User is Already Registered!" + userEmail).build();
-//        }
+        String secretCode = createSecretCode();
+        userRegistrationDetails.setSecretCode(secretCode);
 
-//        userLoginDao.addUser(userRegistrationDetails);
-
-        userRegistrationDetails.setSecretCode("abc");
-        UserLoginDaoHibernate userLoginDaoHibernate = new UserLoginDaoHibernate();
+        MailClient.sendRegistrationEmail(userEmail, secretCode);
 
         userLoginDaoHibernate.createStudentLogin(userRegistrationDetails);
+
         return Response.status(Response.Status.OK).
                 entity("Registered Successfully!").build();
     }
@@ -79,6 +73,10 @@ public class MyResource {
             return true;
         }
         return false;
+    }
+
+    private String createSecretCode() {
+        return UUID.randomUUID().toString();
     }
 
 }
