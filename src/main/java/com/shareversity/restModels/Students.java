@@ -1,30 +1,32 @@
 package com.shareversity.restModels;
 
-public class UserRegistrationDetails {
+import java.util.Date;
 
+public class Students {
     private int id;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
+    private Date createDate;
     private String secretCode;
     private boolean isCodeVerified;
 
-    public UserRegistrationDetails(int id, String firstName, String lastName, String password
-            , String email, String secretCode, boolean codeVerified) {
+    public Students(int id, String firstName, String lastName,
+                    String email, String password, Date createDate, String secretCode, boolean isCodeVerified) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.password = password;
         this.email = email;
+        this.password = password;
+        this.createDate = createDate;
         this.secretCode = secretCode;
-        this.isCodeVerified = codeVerified;
+        this.isCodeVerified = isCodeVerified;
     }
 
-    public UserRegistrationDetails(){
+    public Students() {
 
     }
-
     public int getId() {
         return id;
     }
@@ -49,6 +51,14 @@ public class UserRegistrationDetails {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -57,12 +67,12 @@ public class UserRegistrationDetails {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public String getSecretCode() {
@@ -73,12 +83,12 @@ public class UserRegistrationDetails {
         this.secretCode = secretCode;
     }
 
-    public boolean isIsCodeVerified() {
+    public boolean getIsCodeVerified() {
         return isCodeVerified;
     }
 
     public void setIsCodeVerified(boolean codeVerified) {
-        this.isCodeVerified = codeVerified;
+        isCodeVerified = codeVerified;
     }
 }
 

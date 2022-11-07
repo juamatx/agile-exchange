@@ -5,8 +5,7 @@ import javax.mail.internet.*;
 import java.util.Date;
 import java.util.Properties;
 
-public class MailClient
-{
+public class MailClient {
 	private static final String EMAIL = "princyverma589@gmail.com";
 	private static final String PASS = "fzjuolfnnhdbxqrc";
 

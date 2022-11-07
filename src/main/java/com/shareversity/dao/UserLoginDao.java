@@ -1,6 +1,6 @@
 package com.shareversity.dao;
 
-import com.shareversity.restModels.UserRegistrationDetails;
+import com.shareversity.restModels.Students;
 
 import java.sql.*;
 
@@ -18,7 +18,7 @@ public class UserLoginDao {
         }
     }
 
-    public void addUser(UserRegistrationDetails userRegistrationDetails) {
+    public void addUser(Students students) {
         try {
 
             Statement stmt = c.createStatement();
@@ -26,10 +26,10 @@ public class UserLoginDao {
             // executeUpdate() is used for INSERT, UPDATE,
             // DELETE statements.It returns number of rows
             // affected by the execution of the statement
-            String firstName = userRegistrationDetails.getFirstName();
-            String lastName = userRegistrationDetails.getLastName();
-            String emailPassword = userRegistrationDetails.getPassword();
-            String email = userRegistrationDetails.getEmail();
+            String firstName = students.getFirstName();
+            String lastName = students.getLastName();
+            String emailPassword = students.getPassword();
+            String email = students.getEmail();
             String secretCode = "";
 
             final String SQL_INSERT = "INSERT INTO USER_REGISTRATION" +

@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.shareversity.restModels.Students" table="Students">
+
+
+        <meta attribute="class-description">
+            This class contains the User Details.
+        </meta>
+
+        <id name="id" type="java.lang.Integer" column="Id">
+            <generator class="increment" />
+        </id>
+
+        <properties name="uq_Students_Email" unique="true">
+            <property name="email" column="Email" type="string" />
+        </properties>
+
+        <property name="firstName" column="FirstName" type="string" />
+        <property name="lastName" column="LastName" type="string" />
+        <property name="password" column="StudentPassword" type="java.lang.String" />
+        <property name="createDate" column="CreateDate" type="java.util.Date" />
+        <property name="secretCode" column="SecretCode" type="string" />
+        <property name="isCodeVerified" column="CodeVerified" type="java.lang.Boolean" />
+
+    </class>
+</hibernate-mapping>

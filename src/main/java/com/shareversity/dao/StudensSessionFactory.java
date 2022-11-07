@@ -3,10 +3,10 @@ package com.shareversity.dao;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class UserDetailsSessionFactory {
+public class StudensSessionFactory {
     private static SessionFactory factory;
 
-    private UserDetailsSessionFactory() {
+    private StudensSessionFactory() {
     }
 
     static {

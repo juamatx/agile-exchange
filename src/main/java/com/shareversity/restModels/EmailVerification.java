@@ -1,7 +1,6 @@
 package com.shareversity.restModels;
 
 public class EmailVerification {
-
     private String email;
     private String securityCode;
 
@@ -13,7 +12,6 @@ public class EmailVerification {
     public EmailVerification(){
 
     }
-
     public String getEmail() {
         return email;
     }

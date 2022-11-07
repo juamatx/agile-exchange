@@ -36,6 +36,6 @@
 <!--        </property>-->
 
         <!-- List of XML mapping files -->
-        <mapping resource="UserRegistration.hbm.xml"/>
+        <mapping resource="Students.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
